@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Coin
+  - Boss
+  - Medkit
+  - Apple
   layers:
   - Default
   - TransparentFX
