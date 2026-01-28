@@ -2,9 +2,12 @@ using System.Linq;
 using UnityEditor.Rendering.Universal;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HealthController : MonoBehaviour
 {
+    private int lives = 6;
+    public TextMeshProUGUI liveText;
     public Slider slider;
     private float sliderValue = 6;
     public GameObject GameOverScreen;
@@ -25,6 +28,7 @@ public class HealthController : MonoBehaviour
             Debug.Log("Game Over");
             GameOverScreen.SetActive(true);
         }
+        liveText.text = "Lives: " + lives.ToString();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -34,11 +38,13 @@ public class HealthController : MonoBehaviour
             sliderValue = slider.value;
             HeartsCount-= 1;
             Hearts[(int)slider.value].enabled = false;
+            lives--;
         }
         if(collision.gameObject.CompareTag("Medkit"))
         {
             slider.value = maxHealth;
             sliderValue = slider.value;
+            lives = 6;
             Destroy(collision.gameObject);
             for (int i = 0; i < 6; i++)
             {
