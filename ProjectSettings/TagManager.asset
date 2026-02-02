@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - Medkit
   - Apple
+  - Castle
   layers:
   - Default
   - TransparentFX
